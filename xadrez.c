@@ -1,56 +1,72 @@
-// Inclusão da biblioteca padrão de entrada e saída, necessária para a função printf.
-#include <stdio.h>
+#include <stdio.h> // Biblioteca padrão de entrada e saída.
 
-// --- Documentação das Constantes ---
-// Usamos constantes para definir o número de casas que cada peça vai mover.
-// Isso torna o código mais legível e fácil de manter. Se quisermos alterar
-// o número de movimentos no futuro, só precisamos de mudar o valor aqui.
-#define MOVIMENTOS_TORRE 5
-#define MOVIMENTOS_BISPO 5
-#define MOVIMENTOS_RAINHA 8
-
-/*
- * Função principal do programa.
- * A execução começa aqui.
- */
 int main() {
+    printf("--- DESAFIO DE XADREZ - MATECHECK (CÓDIGO UNIFICADO) ---\n\n");
 
-    // --- Movimentando a Torre ---
-    // Objetivo: Mover a torre 5 casas para a direita.
-    // Estrutura utilizada: loop 'for'.
-    // O 'for' é ideal aqui porque sabemos exatamente quantas vezes queremos repetir a ação.
-    printf("--- Movimentando a Torre (%d casas) ---\n", MOVIMENTOS_TORRE);
-    for (int i = 0; i < MOVIMENTOS_TORRE; i++) {
-        // A cada iteração do loop, imprimimos a direção do movimento.
+    // ==================================================
+    //               INÍCIO DO NÍVEL NOVATO
+    // ==================================================
+    printf("================== NÍVEL NOVATO ==================\n");
+
+    // --- Definição de Constantes para o Nível Novato ---
+    const int MOVIMENTOS_BISPO = 5;
+    const int MOVIMENTOS_TORRE = 5;
+    const int MOVIMENTOS_RAINHA = 8;
+
+    // --- Movimentação do Bispo (usando o loop 'for') ---
+    printf("--- Movimento do Bispo (5 casas na diagonal superior direita) ---\n");
+    for (int i = 0; i < MOVIMENTOS_BISPO; i++) {
+        printf("Cima\n");
         printf("Direita\n");
     }
+    printf("\n");
 
-    // --- Movimentando o Bispo ---
-    // Objetivo: Mover o bispo 5 casas na diagonal superior direita.
-    // Estrutura utilizada: loop 'while'.
-    // O 'while' também serve para repetições contadas, mas requer que o contador
-    // seja inicializado antes do loop e incrementado dentro dele.
-    printf("\n--- Movimentando o Bispo (%d casas) ---\n", MOVIMENTOS_BISPO);
-    int contador_bispo = 0; // Inicializa a variável de controle
-    while (contador_bispo < MOVIMENTOS_BISPO) {
-        // Para simular o movimento na diagonal, combinamos duas direções.
-        printf("Cima, Direita\n");
-        contador_bispo++; // Incrementa o contador para evitar um loop infinito.
+    // --- Movimentação da Torre (usando o loop 'while') ---
+    printf("--- Movimento da Torre (5 casas para a direita) ---\n");
+    int contador_torre = 0;
+    while (contador_torre < MOVIMENTOS_TORRE) {
+        printf("Direita\n");
+        contador_torre++;
+    }
+    printf("\n");
+
+    // --- Movimentação da Rainha (usando o loop 'do-while') ---
+    printf("--- Movimento da Rainha (8 casas para a esquerda) ---\n");
+    int contador_rainha = 0;
+    do {
+        printf("Esquerda\n");
+        contador_rainha++;
+    } while (contador_rainha < MOVIMENTOS_RAINHA);
+    printf("\n");
+
+
+    // ==================================================
+    //             INÍCIO DO NÍVEL AVENTUREIRO
+    // ==================================================
+    printf("================ NÍVEL AVENTUREIRO ===============\n");
+    
+    // --- Definição de Constantes para o Nível Aventureiro ---
+    const int CAVALO_PASSOS_VERTICAIS = 2;
+    const int CAVALO_PASSOS_HORIZONTAIS = 1;
+
+    // --- Movimentação do Cavalo (em 'L': para baixo e para a esquerda) ---
+    printf("--- Movimento do Cavalo (em 'L': para baixo e para a esquerda) ---\n");
+    
+    // Parte 1: Mover 2 casas para baixo (usando o loop 'for').
+    for (int i = 0; i < CAVALO_PASSOS_VERTICAIS; i++) {
+        printf("Baixo\n");
     }
 
-    // --- Movimentando a Rainha ---
-    // Objetivo: Mover a rainha 8 casas para a esquerda.
-    // Estrutura utilizada: loop 'do-while'.
-    // O 'do-while' é semelhante ao 'while', mas garante que o bloco de código
-    // seja executado pelo menos uma vez antes de verificar a condição.
-    printf("\n--- Movimentando a Rainha (%d casas) ---\n", MOVIMENTOS_RAINHA);
-    int contador_rainha = 0; // Inicializa a variável de controle
-    do {
-        // Imprime o movimento para a esquerda.
+    // Parte 2: Mover 1 casa para a esquerda (usando o loop 'while').
+    int contador_cavalo = 0;
+    while (contador_cavalo < CAVALO_PASSOS_HORIZONTAIS) {
         printf("Esquerda\n");
-        contador_rainha++; // Incrementa o contador.
-    } while (contador_rainha < MOVIMENTOS_RAINHA); // A condição é verificada no final.
+        contador_cavalo++;
+    }
+    printf("\n");
 
-    // Retorna 0 para indicar que o programa foi executado com sucesso.
-    return 0;
+    printf("==================================================\n");
+    printf("Desafio concluído com sucesso!\n");
+    
+    return 0; // Indica que o programa terminou com sucesso.
 }
